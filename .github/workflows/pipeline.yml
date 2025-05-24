@@ -84,6 +84,7 @@ jobs:
         php artisan config:clear
         php artisan cache:clear
         php artisan migrate:fresh --env=testing --force
+        echo "Migrate Berhasil"
 
     - name: Run Tests
       run: |

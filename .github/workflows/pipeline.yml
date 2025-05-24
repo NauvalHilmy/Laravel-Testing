@@ -81,7 +81,7 @@ jobs:
     
     - name: Test DB Connection
       run: |
-        mysql -h mysql -usail -ppassword -e "SHOW DATABASES"
+        mysql -h 127.0.0.1 -usail -ppassword -e "SHOW DATABASES"
   
     - name: Database Setup
       run: |

@@ -61,23 +61,13 @@ jobs:
         sed -i 's|DB_PASSWORD=.*|DB_PASSWORD=password|' .env
         
         sed -i 's|APP_URL=.*|APP_URL=http://localhost|' .env.testing
-        sed -i 's|DB_HOST=.*|DB_HOST=mysql|' .env.testing
+        sed -i 's|DB_HOST=.*|DB_HOST=127.0.0.1|' .env.testing
         sed -i 's|DB_DATABASE=.*|DB_DATABASE=trial_laravel|' .env.testing
         sed -i 's|DB_USERNAME=.*|DB_USERNAME=root|' .env.testing
         sed -i 's|DB_PASSWORD=.*|DB_PASSWORD=password|' .env.testing
 
     - name: Generate Application Key
       run: php artisan key:generate
-
-    - name: Wait for MySQL to be ready
-      run: |
-        for i in {1..10}; do
-          if mysqladmin ping -h mysql -ppassword --silent; then
-            break
-          fi
-          echo "Waiting for MySQL..."
-          sleep 3
-        done
     
     - name: Test DB Connection
       run: |

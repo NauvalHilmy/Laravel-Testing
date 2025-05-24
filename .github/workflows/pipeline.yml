@@ -78,7 +78,11 @@ jobs:
           echo "Waiting for MySQL..."
           sleep 3
         done
-
+    
+    - name: Test DB Connection
+      run: |
+        mysql -h mysql -usail -ppassword -e "SHOW DATABASES"
+  
     - name: Database Setup
       run: |
         php artisan config:clear
